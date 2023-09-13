@@ -180,7 +180,7 @@ span.frame__demos-item:not(:first-child) {
 	width: min-content;
 	margin: 0 0 30vh auto;
 	padding: 13vw 10vh 3vh 3vh;
-	grid-template-columns: repeat(2,300px);
+	grid-template-columns: 300px;
 	grid-auto-rows: 300px;
 	gap: 1rem;
 	z-index: 200;
@@ -327,5 +327,8 @@ span.frame__demos-item:not(:first-child) {
 		position: absolute;
 		top: 0;
 		left: -13vw;
+	}
+	.grid {
+		grid-template-columns: repeat(2,300px);
 	}
 }
