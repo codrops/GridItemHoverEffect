@@ -1,12 +1,12 @@
 # Grid Item Hover Effect
 
-Some hover effects based on the grid design by Alena Orlova
+Some hover effects based on the [grid design](https://dribbble.com/shots/21567003-SOTA-Branding) by [Alena Orlova](https://dribbble.com/Al_Eagle).
 
-![Image Title](https://generative-placeholders.glitch.me/image?width=800&height=600")
+![Grid Hover](https://tympanus.net/codrops/wp-content/uploads/2023/09/griditemhover.gif?x39121)
 
-[Article on Codrops](https://tympanus.net/codrops/?p=)
+[Article on Codrops](https://tympanus.net/codrops/?p=73537)
 
-[Demo](http://tympanus.net/Development/.../)
+[Demo](http://tympanus.net/Development/GridItemHoverEffect/)
 
 ## Installation
 
@@ -17,8 +17,6 @@ Run this demo on a [local server](https://developer.mozilla.org/en-US/docs/Learn
 - Images generated with [Midjourney](https://midjourney.com)
 
 ## Misc
-
-Follow *Author*: [Twitter](), [Instagram](), [GitHub]() 
 
 Follow Codrops: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
 
