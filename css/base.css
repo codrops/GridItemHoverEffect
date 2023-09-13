@@ -1,0 +1,331 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 16px;
+	--color-text: #fdf17b;
+	--color-text-alt: #8bff85;
+	--color-text-grid: #fff;
+	--color-bg: #000;
+	--color-link: #54ad8a;
+	--color-link-hover: #a054fd;
+	--cut: 20px;
+}
+
+body {
+	margin: 0;
+	color: var(--color-text);
+	background: var(--color-bg) url(../img/bg.jpg) no-repeat 50% 50% fixed;
+	background-size: cover;
+	font-family: "iki-mono-variable", sans-serif;
+	font-variation-settings: "wdth" 80, "wght" 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+a {
+	text-decoration: underline;
+	color: var(--color-link);
+	outline: none;
+	cursor: pointer;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+	text-decoration: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:not(.card__image):focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:not(.card__image):focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+	background: transparent;
+}
+
+a:not(.card__image):focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid red;
+	background: transparent;
+}
+
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+.frame {
+	z-index: 100;
+	position: relative;
+	padding: 2vw;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-areas: 'title title' 'prev back' 'credits credits' 'sponsor sponsor' ;
+	grid-gap: 1rem;
+	pointer-events: none;
+}
+
+body #cdawrap {
+    justify-self: start;
+}
+
+.frame a {
+	pointer-events: auto;
+}
+
+.frame__title {
+	grid-area: title;
+	font-size: inherit;
+	margin: 0;
+	font-weight: inherit;
+}
+
+.frame__credits {
+	grid-area: credits;
+}
+
+.frame__back {
+	grid-area: back;
+	justify-self: start;
+}
+
+.frame__prev {
+	grid-area: prev;
+	justify-self: start;
+}
+
+.frame__demos {
+	grid-area: demos;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	align-self: start;
+	flex-wrap: wrap;
+}
+
+.frame__demos-item:not(:first-child) {
+	width: 2rem;
+	display: block;
+	flex: none;
+	border-radius: 10px;
+	aspect-ratio: 1;
+	border: 1px solid var(--color-link-hover);
+	display: grid;
+	place-items: center;
+}
+
+span.frame__demos-item:not(:first-child) {
+	border-color: #fff;
+}
+
+.grid {
+	display: grid;
+	position: relative;
+	width: min-content;
+	margin: 0 0 30vh auto;
+	padding: 13vw 10vh 3vh 3vh;
+	grid-template-columns: repeat(2,300px);
+	grid-auto-rows: 300px;
+	gap: 1rem;
+	z-index: 200;
+	color: var(--color-text-grid);
+}
+
+.grid__title {
+	text-transform: uppercase;
+	font-size: 6.75vw;
+	line-height: 0.8;
+	opacity: 0.4;
+	font-family: "tt-autonomous", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	line-height: 0.8;
+	background-color: #fff;
+	background-image: linear-gradient(45deg, #fdf17b, #54ad8a, #a054fd);
+	background-size: 100%;
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent; 
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+}
+
+.card {
+	aspect-ratio: 1;
+	overflow: hidden;
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	grid-template-rows: repeat(2,1fr);
+	gap: 0.5rem;
+	padding: 0.5rem;
+	grid-template-areas: 'box-a box-b' 'box-c box-d';
+	cursor: pointer;
+}
+
+.card__img {
+	background-size: cover;
+	background-position: 50% 50%;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	will-change: filter, transform;
+}
+
+[data-effect="hover-2"] .card__img {
+	transform: scale3d(1.3,1.3,1.3);
+}
+
+[data-effect="hover-3"] .card__img {
+	transform: scale3d(1.2,1.2,1.2);
+}
+
+.card__box {
+	opacity: 0;
+	z-index: 2;
+	padding: 1rem;
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	flex-direction: column;
+	background-color: rgba(255, 255, 255, .15);
+	backdrop-filter: blur(5px);
+}
+
+.card__box--a {
+	grid-area: box-a;
+}
+
+.card__box--b {
+	grid-area: box-b;
+}
+
+.card__box--c {
+	grid-area: box-c;
+}
+
+.card__box--d {
+	grid-area: box-d;
+}
+
+.card__box--b,
+.card__box--d {
+	align-items: flex-end;
+	text-align: right;
+}
+
+/* Corners made with https://css-generators.com/custom-corners/ by Temani Afif */
+
+.card__box--a,
+.card__box--d {
+	clip-path: polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)));
+}
+
+.card__box--b,
+.card__box--c {
+	clip-path: polygon(0 var(--cut),var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%);
+}
+
+.card__box-number {
+	font-size: clamp(2rem, 10vw, 3.5rem);
+	font-family: "tt-autonomous", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	line-height: 0.8;
+	grid-area: number;
+}
+
+.card__box--alt {
+	color: var(--color-text-alt);
+}
+
+.card__box-tags,
+.card__box-category {
+	font-size: 0.85rem;
+	font-weight: 600;
+	margin-top: auto;
+}
+
+.card__box-tags {
+	grid-area: tags;
+	font-size: 0.65rem;
+}
+
+.card__box-category {
+	grid-area: category;
+}
+
+.card__box > span {
+	display: inline-bock;
+	position: relative;
+	overflow: hidden;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		position: fixed;
+		bottom: 0;
+	}
+	.grid__title {
+		position: absolute;
+		top: 0;
+		left: -13vw;
+	}
+}
